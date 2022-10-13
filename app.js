@@ -3,25 +3,35 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 require('dotenv').config()
+const path = require(`path`)
 
 const app = express()
 const PORT = 3000
 
+
+//app.use(express.static(`public`))
+//app.use(express.static(path.join(__dirname, `public`)))
+app.use(express.static('public'))
 app.use(morgan('dev'))
 app.use(express.json());
 
-app.use('/blog', require('./controllers/BlogRouter'))
+//App settings
+app.set(`view engine`, `jsx`)
+app.engine(`jsx`, require(`express-react-views`).createEngine());
+
+app.use(`/blog`, require(`./controllers/BlogRouter`))
+app.use(`/user`, require(`./controllers/UserRouter`))
 
 
-app.get('/', (req, res) => {
-    res.send('Hello')
+app.get(`/`, (req, res) => {
+    res.render('pages/HomePage')
 })
 
 
 
 
 app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+    console.log(`Server is running on port: ${PORT}`);
 
     // connect to MongoDB
     mongoose.connect(process.env.MONGO_URI, {
