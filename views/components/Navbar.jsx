@@ -12,9 +12,9 @@ return(
     
     <a href="/blog/new">Create New Blog</a>
     
-    <a href="/users/signup">Signup</a>
+    <a href="/user/signup">Signup</a>
 
-    <a href='/users/signout'>Signout</a>
+    <a href='/user/signout'>Signout</a>
     </nav>
     
 )

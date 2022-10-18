@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const methodOverride = require(`method-override`)
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const path = require('path')
 require('dotenv').config()
 
 const app = express()
@@ -12,7 +13,7 @@ const PORT = process.env.PORTS || 3000
 
 
 //app.use(express.static(`public`))
-//app.use(express.static(path.join(__dirname, `public`)))
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.static('public'))
 app.use(morgan('dev'))
 app.use(express.json());
@@ -36,7 +37,9 @@ app.use('/user', require('./controllers/UserRouter'))
 app.get('/', (req, res) => {
     res.render('pages/HomePage')
 })
-
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 
 
