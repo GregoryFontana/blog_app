@@ -9,10 +9,11 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.6.5",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "morgan": "^1.10.0"
+   
   },
   "name": "blog_app",
   "version": "1.0.0",
